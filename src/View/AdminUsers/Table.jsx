@@ -300,12 +300,15 @@ const TableAdmin = () => {
       )
       .then((data) => {
         // axios.delete(`http://pf-backend-production-83a4.up.railway.app/banned/${data.data._id}`,{
-        axios.delete(`/banned/${data.data._id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            // 'Content-Type': 'application/json'
-          },
-        });
+        axios.delete(
+          `https://pf-backend-production-83a4.up.railway.app/banned/${data.data._id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              // 'Content-Type': 'application/json'
+            },
+          }
+        );
         setGalleta(!galleta);
       })
       .catch((error) => console.log(error));

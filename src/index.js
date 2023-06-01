@@ -1,5 +1,4 @@
 import { Auth0Provider } from "@auth0/auth0-react";
-import axios from "axios";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -9,7 +8,7 @@ import store from "./Redux/store";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
-axios.defaults.baseURL = "https://pf-backend-production-83a4.up.railway.app";
+// axios.defaults.baseURL = "https://pf-backend-production-83a4.up.railway.app";
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
