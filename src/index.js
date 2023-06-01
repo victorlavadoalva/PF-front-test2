@@ -1,12 +1,12 @@
+import { Auth0Provider } from "@auth0/auth0-react";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import App from './App';
-import store from './Redux/store';
-import './index.css';
-import { Auth0Provider } from '@auth0/auth0-react';
-import reportWebVitals from './reportWebVitals';
+import App from "./App";
+import store from "./Redux/store";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
@@ -19,10 +19,10 @@ ReactDOM.render(
       redirectUri={window.location.origin} // es para retornar al usuario en la ruta que estaba
     >
       <BrowserRouter>
-        <Auth0Provider 
-          domain={domain} 
-          clientId={clientId} 
-          redirectUri={window.location.origin} 
+        <Auth0Provider
+          domain={domain}
+          clientId={clientId}
+          redirectUri={window.location.origin}
         >
           <App />
         </Auth0Provider>
