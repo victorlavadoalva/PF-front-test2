@@ -28,10 +28,6 @@ import {
 //const GET_URL_TOKEN = `https://pf-backend-production-83a4.up.railway.app/${token}`;
 //const URL_POST = "​https://pf-backend-production-83a4.up.railway.app/posts";
 
-const URL_RESTAURANT =
-  "https://pf-backend-production-83a4.up.railway.app/restaurants";
-const URL_USERS = "http://localhost:3001/users";
-const backendUrl = "http://localhost:3001";
 const userLocal = "/users";
 const restaurantLocal = "/restaurants";
 
@@ -187,7 +183,7 @@ export const GetAdminUser = () => {
 export const getRestorantsID = (id) => {
   return async function (dispatch) {
     try {
-      const response = await axios(URL_RESTAURANT + "/" + id);
+      const response = await axios("/" + id);
       const data = response.data;
       return dispatch({ type: GET_RESTOURANT_ID, payload: data });
     } catch (error) {

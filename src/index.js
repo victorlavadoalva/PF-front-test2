@@ -9,7 +9,6 @@ import store from "./Redux/store";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
-// axios.defaults.baseURL = "http://localhost:3001";
 axios.defaults.baseURL = "https://pf-backend-production-83a4.up.railway.app";
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
