@@ -64,7 +64,7 @@ const ReservasCliente = () => {
       // por params id de restaurante y por name ID de usuario
       axios
         .put(
-          url2 + "/restaurants/" + `${idRestaurant}`,
+          "/restaurants/" + `${idRestaurant}`,
           { reservation: reservation },
           {
             headers: {
