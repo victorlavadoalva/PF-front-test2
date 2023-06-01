@@ -19,7 +19,8 @@ console.log(clientId);
 ReactDOM.render(
   <Provider store={store}>
     <Auth0Provider
-      domain={domain}
+      // domain={domain}
+      domain="dev-1guco2rckadwltb5.us.auth0.com"
       clientId={clientId}
       redirectUri={window.location.origin} // es para retornar al usuario en la ruta que estaba
     >
