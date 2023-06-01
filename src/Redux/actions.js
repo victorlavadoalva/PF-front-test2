@@ -41,9 +41,12 @@ export const getRestorants = ({
 }) => {
   return async function (dispatch) {
     try {
-      const { data } = await axios(restaurantLocal, {
-        params: { page, order, rating, name, country, tag: stringTag },
-      });
+      const { data } = await axios(
+        "https://pf-backend-production-83a4.up.railway.app" + restaurantLocal,
+        {
+          params: { page, order, rating, name, country, tag: stringTag },
+        }
+      );
       console.log("Server Response:", data);
       return (
         dispatch({ type: GET_ALL_RESTORANTS, payload: data[0] }),
@@ -62,9 +65,12 @@ export const getRestorantFilter = (tag) => {
   return async function (dispatch) {
     console.log(tag);
     try {
-      const { data } = await axios(restaurantLocal, {
-        params: { tag },
-      });
+      const { data } = await axios(
+        "https://pf-backend-production-83a4.up.railway.app" + restaurantLocal,
+        {
+          params: { tag },
+        }
+      );
       return dispatch({ type: FILTER_LANDING, payload: data[0].documents });
     } catch (error) {}
   };
@@ -73,7 +79,9 @@ export const getRestorantFilter = (tag) => {
 export const getDish = (id) => {
   return async function (dispatch) {
     try {
-      const response = await axios("/" + id);
+      const response = await axios(
+        "https://pf-backend-production-83a4.up.railway.app/" + id
+      );
       const { menu } = response.data;
       console.log("response menu:", JSON.stringify(menu));
       return dispatch({ type: GET_DISH, payload: menu });
@@ -87,10 +95,16 @@ export const GetUserEmail = ({ saveEmail }) => {
   return async function (dispatch) {
     try {
       console.log(saveEmail);
-      const response_user = await axios.get(userLocal + `?email=${saveEmail}`);
+      const response_user = await axios.get(
+        "https://pf-backend-production-83a4.up.railway.app" +
+          userLocal +
+          `?email=${saveEmail}`
+      );
       console.log(response_user);
       const response_restaurant = await axios.get(
-        restaurantLocal + `?email=${saveEmail}`
+        "https://pf-backend-production-83a4.up.railway.app" +
+          restaurantLocal +
+          `?email=${saveEmail}`
       );
       const dataUser = response_user.data;
       const dataRestaurant = response_restaurant.data;
@@ -118,13 +132,21 @@ export const GetTokenLogin = (typeUser, email) => {
     try {
       if (typeUser === "Cliente") {
         console.log("!!!!!!!ActionsToken", email);
-        const { data } = await axios.get(userLocal + `/login/${email}`);
+        const { data } = await axios.get(
+          "https://pf-backend-production-83a4.up.railway.app" +
+            userLocal +
+            `/login/${email}`
+        );
         localStorage.setItem("access_token", data.token);
         console.log(data);
         return dispatch({ type: GET_TOKEN, payload: [true, data] });
       } else if (typeUser === "Restaurant") {
         console.log("!!!!!!!!ActionsToken ,Restaurant", email);
-        const { data } = await axios.get(restaurantLocal + `/login/${email}`);
+        const { data } = await axios.get(
+          "https://pf-backend-production-83a4.up.railway.app" +
+            restaurantLocal +
+            `/login/${email}`
+        );
         localStorage.setItem("access_token", data.token);
 
         return dispatch({ type: GET_TOKEN, payload: [true, data] });
@@ -142,7 +164,10 @@ export const PostUser = (User) => {
   return async function (dispatch) {
     try {
       console.log(User);
-      const { data } = await axios.post(User);
+      const { data } = await axios.post(
+        "https://pf-backend-production-83a4.up.railway.app/users",
+        User
+      );
       return dispatch({ type: POST_USER, payload: [true, data] });
     } catch (error) {
       return dispatch({
@@ -157,7 +182,10 @@ export const PostRestaurant = (Restaurant) => {
   return async function (dispatch) {
     try {
       console.log(Restaurant);
-      const { data } = await axios.post("/restaurants", Restaurant);
+      const { data } = await axios.post(
+        "https://pf-backend-production-83a4.up.railway.app/restaurants",
+        Restaurant
+      );
       return dispatch({ type: POST_USER, payload: [true, data] });
     } catch (error) {
       return dispatch({
@@ -183,7 +211,9 @@ export const GetAdminUser = () => {
 export const getRestorantsID = (id) => {
   return async function (dispatch) {
     try {
-      const response = await axios("/" + id);
+      const response = await axios(
+        "https://pf-backend-production-83a4.up.railway.app/" + id
+      );
       const data = response.data;
       return dispatch({ type: GET_RESTOURANT_ID, payload: data });
     } catch (error) {
@@ -207,7 +237,7 @@ export const updateAccount = (userId, userData) => {
       dispatch({ type: LOADING });
       const token = localStorage.getItem("access_token");
       const resp = await axios.put(
-        `${userLocal}/${userId}`,
+        `https://pf-backend-production-83a4.up.railway.app/${userLocal}/${userId}`,
         {
           name: userData.name,
           email: userData.email,

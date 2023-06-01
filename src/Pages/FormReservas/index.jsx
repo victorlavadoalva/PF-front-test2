@@ -63,7 +63,8 @@ const ReservasCliente = () => {
       // por params id de restaurante y por name ID de usuario
       axios
         .put(
-          "/restaurants/" + `${idRestaurant}`,
+          "https://pf-backend-production-83a4.up.railway.app/restaurants/" +
+            `${idRestaurant}`,
           { reservation: reservation },
           {
             headers: {

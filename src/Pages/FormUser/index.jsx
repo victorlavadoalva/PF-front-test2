@@ -43,7 +43,10 @@ export default function FormUser() {
       formData.append("images", user.images);
       formData.append("type_customer", user.type_customer);
       axios
-        .post("/users", formData)
+        .post(
+          "https://pf-backend-production-83a4.up.railway.app/users",
+          formData
+        )
         .then((response) => {
           console.log("Datos enviados:", formData);
           console.log("Respuesta del servidor:", response.data);

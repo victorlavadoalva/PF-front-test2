@@ -13,10 +13,14 @@ export default function Map() {
     country: userObject.country,
   });
   useEffect(() => {
-    axios.get("/restaurants?all=true").then((data) => {
-      setAllRestaurants(data.data);
-      console.log(userObject);
-    });
+    axios
+      .get(
+        "https://pf-backend-production-83a4.up.railway.app/restaurants?all=true"
+      )
+      .then((data) => {
+        setAllRestaurants(data.data);
+        console.log(userObject);
+      });
   }, []);
   useEffect(() => {
     async function buscarDireccion() {

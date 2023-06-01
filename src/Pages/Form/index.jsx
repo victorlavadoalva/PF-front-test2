@@ -79,7 +79,10 @@ export default function Form() {
         formData.append("images", file);
       });
       axios
-        .post("/restaurants", formData)
+        .post(
+          "https://pf-backend-production-83a4.up.railway.app/restaurants",
+          formData
+        )
         .then((response) => {
           console.log("Datos enviados:", formData);
           console.log("Respuesta del servidor:", response.data);

@@ -127,11 +127,14 @@ const TableAdmin = () => {
   let datas;
   useEffect(async () => {
     // datas = await axios.get(`http://pf-backend-production-83a4.up.railway.app/admin`, {
-    datas = await axios.get(`/admin`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    datas = await axios.get(
+      `https://pf-backend-production-83a4.up.railway.app/admin`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     let filteredData = datas.data;
 
@@ -202,13 +205,13 @@ const TableAdmin = () => {
     axios
       .get(
         event.target.name == "Restaurant"
-          ? `/restaurants/${event.target.id}`
-          : `/users/${event.target.id}`
+          ? `https://pf-backend-production-83a4.up.railway.app/restaurants/${event.target.id}`
+          : `https://pf-backend-production-83a4.up.railway.app/users/${event.target.id}`
       )
       .then((data) => {
         // axios.post(`http://pf-backend-production-83a4.up.railway.app/banned`,{
         axios.post(
-          `/banned`,
+          `https://pf-backend-production-83a4.up.railway.app/banned`,
           {
             user_banned: data.data,
           },
@@ -227,11 +230,15 @@ const TableAdmin = () => {
   const handlerSetAdmin = (event) => {
     // axios.get(event.target.name == "Restaurant" ? `http://pf-backend-production-83a4.up.railway.app/restaurants/${event.target.id}` : `http://pf-backend-production-83a4.up.railway.app/users/${event.target.id}`)
     axios
-      .put(`/users/${event.target.id}?password=${password}`, null, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .put(
+        `https://pf-backend-production-83a4.up.railway.app/users/${event.target.id}?password=${password}`,
+        null,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((data) => {
         const existingData = localStorage.getItem("UserLogVerificate");
         const userData = JSON.parse(existingData);
@@ -251,11 +258,15 @@ const TableAdmin = () => {
   const handlerRemoveAdmin = (event) => {
     // axios.get(event.target.name == "Restaurant" ? `http://pf-backend-production-83a4.up.railway.app/restaurants/${event.target.id}` : `http://pf-backend-production-83a4.up.railway.app/users/${event.target.id}`)
     axios
-      .put(`/users/${event.target.id}?password=removeAdmin`, null, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .put(
+        `https://pf-backend-production-83a4.up.railway.app/users/${event.target.id}?password=removeAdmin`,
+        null,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((data) => {
         const existingData = localStorage.getItem("UserLogVerificate");
         const userData = JSON.parse(existingData);
@@ -278,12 +289,15 @@ const TableAdmin = () => {
     console.log(token);
     // axios.get(`http://pf-backend-production-83a4.up.railway.app/banned?email=${event.target.id}`,{
     axios
-      .get(`/banned?email=${event.target.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          // 'Content-Type': 'application/json'
-        },
-      })
+      .get(
+        `https://pf-backend-production-83a4.up.railway.app/banned?email=${event.target.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            // 'Content-Type': 'application/json'
+          },
+        }
+      )
       .then((data) => {
         // axios.delete(`http://pf-backend-production-83a4.up.railway.app/banned/${data.data._id}`,{
         axios.delete(`/banned/${data.data._id}`, {

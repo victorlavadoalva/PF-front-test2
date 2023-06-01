@@ -17,12 +17,15 @@ const Dashboards = () => {
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get(`/restaurants/dashboard/${dataParsed.id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            // 'Content-Type': 'application/json'
-          },
-        })
+        .get(
+          `https://pf-backend-production-83a4.up.railway.app/restaurants/dashboard/${dataParsed.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              // 'Content-Type': 'application/json'
+            },
+          }
+        )
         .then((response) => {
           if (isMounted.current) {
             setDataDhas(response.data);

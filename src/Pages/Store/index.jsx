@@ -58,7 +58,10 @@ const Store = () => {
 
   async function payment() {
     setConfirmed(true);
-    const response = await axios.post("/payment", cart);
+    const response = await axios.post(
+      "https://pf-backend-production-83a4.up.railway.app/payment",
+      cart
+    );
     setLink(response.data);
   }
 

@@ -12,7 +12,9 @@ export const Transactions = ({ restId }) => {
   useEffect(() => {
     const fetchPedidosCliente = async () => {
       try {
-        const { data } = await axios.get(`/users/transactions/${restId}`);
+        const { data } = await axios.get(
+          `https://pf-backend-production-83a4.up.railway.app/users/transactions/${restId}`
+        );
         setPedidoRows(data);
       } catch (error) {
         console.error("Error al obtener los pedidos:", error);

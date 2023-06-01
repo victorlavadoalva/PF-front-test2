@@ -86,7 +86,10 @@ export default function FormPlatos() {
           formData.append("authorRest", id);
           console.log("Formulario enviado:", valores);
           axios
-            .post("/posts", formData)
+            .post(
+              "https://pf-backend-production-83a4.up.railway.app/posts",
+              formData
+            )
             .then((response) => {
               console.log("Datos enviados:", formData);
               console.log("Respuesta del servidor:", response.data);
@@ -99,7 +102,7 @@ export default function FormPlatos() {
 
               axios
                 .put(
-                  `/restaurants/${id}`,
+                  `https://pf-backend-production-83a4.up.railway.app/restaurants/${id}`,
                   {
                     menu: platoId,
                   },
